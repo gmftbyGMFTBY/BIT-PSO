@@ -1,2 +1,3 @@
 # BIT-PSO
-BIT-PSO for workshop scheduling, the main script `pso.py` is already deleted.
+
+实现了基于交换子和交换序的PSO算法的编码方案，针对JSP问题进行特定设计。

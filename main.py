@@ -3,6 +3,7 @@ from pso import *
 import numpy as np
 import os
 from pprint import pprint
+import argparse
 
 def prepare_data(path):
     with open(path) as f:
@@ -24,11 +25,16 @@ def prepare_data(path):
                 f.write(line)
     print(f'[!] find {len(data)} samples in the {path}')
 
-def read_data():
+def read_data(path):
     '''
     read data from input stream
     '''
-    n_m = input()
+    path = f'data/test_{path}.txt'
+    print(f'[!] load the data from {path}')
+    with open(path) as f:
+        lines = f.readlines()
+        lines = [i.strip() for i in lines]
+    n_m = lines[0]
     n, m = list(map(int, n_m.split()))
     schedule = []
     times = {}
@@ -37,7 +43,7 @@ def read_data():
         for j in range(m):
             times[i][j] = None
     for i in range(n):
-        line = list(map(float, input().split()))
+        line = list(map(float, lines[i+1].split()))
         index, p = 0, []
         while index < len(line):
             machine = line[index]
@@ -50,9 +56,12 @@ def read_data():
     return n, m, times, schedule
 
 if __name__ == "__main__":
-    # prepare the data
-    # prepare_data('test.txt')
-    n, m, times, schedule = read_data()
+    prepare_data('test.txt')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--item', default=0, type=int)
+    args = parser.parse_args()
+    n, m, times, schedule = read_data(args.item)
     agent = PSO(n, m, times, schedule)
     agent.show_parameters()
     agent.train()
+    agent.save_rest(f'rest/rest_{args.item}.pkl')
