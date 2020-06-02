@@ -56,7 +56,10 @@ def read_data(path):
     return n, m, times, schedule
 
 if __name__ == "__main__":
-    prepare_data('test.txt')
+    # test
+    # from utils import *
+    # item = [0, 2, 1, 2, 1, 0, 2, 1, 0]
+    # print(calculate_time(n, m, item, times, schedule))
     parser = argparse.ArgumentParser()
     parser.add_argument('--item', default=0, type=int)
     args = parser.parse_args()

@@ -19,7 +19,7 @@ def calculate_time(n, m, item, times, schedule):
         pId = processed_id[wId]
         processed_id[wId] += 1
         mId = schedule[wId][pId]
-        t = times[wId][pId]
+        t = times[wId][mId]
         if pId == 0:
             startTime[wId][pId] = machineWorkTime[mId]
         else:
@@ -86,5 +86,5 @@ if __name__ == "__main__":
     pairs = find_switch_pairs(
             [0, 0, 0, 1, 1, 1, 2, 2, 2], 
             [0, 0, 0, 1, 1, 1, 2, 2, 2], 
-            3)
+           3)
     print(pairs)

@@ -22,8 +22,8 @@ class PSO:
             'particle_num': 200,
             'n': n,
             'm': m,
-            'start_pairs': 10,
-            'alpha': 0.3,
+            'start_pairs': 5,
+            'alpha': 0.4,
             'max_length_pairs': 10,
             'seed': 100,
         }
